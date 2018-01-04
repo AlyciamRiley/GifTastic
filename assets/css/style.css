@@ -1,0 +1,49 @@
+body {
+    /*border: 10px solid purple;*/
+    background-image:url('../images/spiderweb.jpg');
+    background-size: cover;
+    font-family: 'Lato', sans-serif;
+    color: #fff;
+}
+
+
+
+#container {
+    /*border: 8px solid green;*/
+    max-width: 960px;
+    width: 100%;
+    margin: 25px auto auto 200px;
+    padding: 15px;
+    background: rgba(26, 0, 26, .5);
+    border: 1px solid #7b6278;
+    
+}
+
+#title {
+    /*border: 4px solid red;*/
+    text-align: center;
+    font-family: 'Frijole', cursive;
+    font-size: 36px;
+    color:#7b6278;
+    text-shadow: 1px 1px 3px #000;
+}
+
+#buttons {
+    /*border: 4px solid blue;*/
+    margin-top: 25px;
+}
+#sub-container {
+    margin-top: 25px;
+    margin-left: 15px;
+    width: 900px;
+}
+
+#gifs {
+    /*border: 4px solid black;*/
+}
+
+#search-bar {
+    /*border: 4px solid pink;*/
+   
+}
+
