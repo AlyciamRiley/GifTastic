@@ -38,7 +38,7 @@ function renderButtons () {
 
     
 $("#buttons").on("click", function() {
-    ghouls = $(this).attr("data-ghoul");
+   
     
 //button calls 10 gifs from giphy(static)
    var queryURL = "https://api.giphy.com/v1/gifs/search?q=" + ghouls + "&api_key=hEOJpTZTXZTmdI9Wu2qQpiO2COrWCj5q&limit=10";
@@ -65,6 +65,7 @@ $("#buttons").on("click", function() {
         
         console.log(queryURL);
     })
+     ghouls = $(this).attr("data-ghoul");
 
 });
 
