@@ -7,19 +7,19 @@ function renderButtons () {
     $("#buttons").empty();
     
     for (var i = 0; i < ghouls.length; i++) {
-          var a = $("<button class=button>");
+          var a = $("<button class=btn>");
           a.addClass("ghouls");
           a.attr("data-ghoul", ghouls[i]);
           a.text(ghouls[i]);
           $("#buttons").append(a);
     }
 };
-     
-  
+
 
 //User interaction starts
 //User clicks button
-$("#buttons").on("click", function() {
+$('button').on("click", ".ghouls", function() {
+   var selectedVal = $(this).attr("data-ghoul");
    
     
 //button calls 10 gifs from giphy(static)
@@ -51,11 +51,9 @@ $("#buttons").on("click", function() {
 
 });
 
- 
-
 
   // This function handles events where one button is clicked
-      $("#add-ghoul").on("click", function(event) {
+      $("#btn-ghoul").on("click", function(event) {
         event.preventDefault();
 // This line will grab the text from the input box
         var addGhoul = $("#ghoul-input").val().trim();
