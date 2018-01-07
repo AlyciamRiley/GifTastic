@@ -2,67 +2,102 @@
 
 var ghouls = ['Babadook', 'Norman Bates', 'The Boogeyman', 'Chupacabra', 'Donald Trump', 'Cujo', 'Gremlins', 'Jigsaw', 'Freddy Krueger', 'Krampus', 'Hannibal Lecter', 'Jack Torrance', 'Jason Voorhees', 'Annie Wilkes', 'Pennywise', 'Chucky', 'Captain Spaulding'];
 
-//create loop that appends buttons for each string in the array
-function renderButtons () {
-    $("#buttons").empty();
-    
-    for (var i = 0; i < ghouls.length; i++) {
-          var a = $("<button class=btn>");
-          a.addClass("ghouls");
-          a.attr("data-ghoul", ghouls[i]);
-          a.text(ghouls[i]);
-          $("#buttons").append(a);
-    }
-};
 
 
-//User interaction starts
-//User clicks button
-$('button').on("click", ".ghouls", function() {
-   var selectedVal = $(this).attr("data-ghoul");
-   
-    
-//button calls 10 gifs from giphy(static)
- 
-   var queryURL = "https://api.giphy.com/v1/gifs/search?q=" + ghouls + "&api_key=hEOJpTZTXZTmdI9Wu2qQpiO2COrWCj5q&limit=10";
-    
+
+//button calls 10S gifs from giphy(static)
+function displayGhoulGif() {
+    var ghoul = $(this).attr("data-name");
+    var queryURL = "https://api.giphy.com/v1/gifs/search?q=" + ghoul + "&api_key=hEOJpTZTXZTmdI9Wu2qQpiO2COrWCj5q&limit=10";
+
     $.ajax({
         url: queryURL,
         method: "GET"
-    }) .done(function(response) {
-        var results = response.data;
-        
-        for (var j = 0; j < results.length; j++) {
-            
-                var gifDiv = $("<div class='item'>");
-                var rating = results[j].rating;
-                var p = $("<p>").text("Rating: " + rating);
-                var ghoulImage = $("<img id=ghoulGif>");
-                
-                ghoulImage.attr("src", results[j].images.fixed_height.url);
-                gifDiv.append(p);
-                gifDiv.append(ghoulImage);
-                $("#gifs").prepend(gifDiv);
-            }
-        
-        console.log(queryURL);
-        console.log(response.data);
-    })
+    }).done(function (response) {
 
+        var gifDiv = $("<div class='item'>");
+        var results = response.data;
+
+        for (var j = 0; j < results.length; j++) {
+            var rating = results[j].rating;
+            var p = $("<p>").text("Rating: " + rating);
+            var ghoulImage = $("<img>");
+
+            
+            ghoulImage.attr("src", results[j].images.original_still.url);
+            ghoulImage.attr("data-still", results[j].images.original_still.url);
+            ghoulImage.attr("data-animate", results[j].images.original.url);
+            ghoulImage.attr("data-state", "still");
+            ghoulImage.addClass("gif");
+
+ gifDiv.append(p);
+            gifDiv.append(ghoulImage);
+            $("#gif-view").prepend(gifDiv);
+
+        };
+
+        console.log(results);
+    });
+
+
+};
+//create loop that appends buttons for each string in the array
+
+function renderButtons() {
+    $("#buttons-view").empty();
+
+    for (var i = 0; i < ghouls.length; i++) {
+        var a = $("<button>");
+        a.addClass("ghoul");
+        a.attr("data-name", ghouls[i]);
+        a.text(ghouls[i]);
+        $("#buttons-view").append(a);
+    }
+}
+
+
+// This function handles events where one button is clicked
+$("#add-ghoul").on("click", function (event) {
+    event.preventDefault();
+    // This line will grab the text from the input box
+    var ghoul = $("#ghoul-input").val().trim();
+    // The ghoul from the textbox is then added to our array
+    ghouls.push(ghoul);
+
+    // calling renderButtons which handles the processing of our ghoul array
+    renderButtons();
 });
 
+$(document).on("click", ".ghoul", displayGhoulGif);
+$("#gif-view").on("click", ".gif", function(displayGhoulGif) {
+    console.log("clicked");
+    
+    var state = $(this).attr("data-state");
+    
+    if (state === "still") {
+        $(this).attr("src", $(this).attr("data-animate"));
+        $(this).attr("data-state", "animate");
+        
+    } else {
+        $(this).attr("src", $(this).attr("data-still"));
+        $(this).attr("data-state", "still");
+    }
+});
 
-  // This function handles events where one button is clicked
-      $("#btn-ghoul").on("click", function(event) {
-        event.preventDefault();
-// This line will grab the text from the input box
-        var addGhoul = $("#ghoul-input").val().trim();
-        // The ghoul from the textbox is then added to our array
-        ghouls.push(addGhoul);
+// Calling the renderButtons function at least once to display the initial list of ghouls
+renderButtons();
 
-        // calling renderButtons which handles the processing of our ghoul array
-        renderButtons();
-      });
 
-      // Calling the renderButtons function at least once to display the initial list of ghouls
-      renderButtons();
+/*$("#gifs-appear-here").on("click", ".gif", function() {
+          console.log("clicked");
+          var state = $(this).attr("data-state");
+            if (state === "still") {
+            $(this).attr("src", $(this).attr("data-animate"));
+            $(this).attr("data-state", "animate");
+            $(this).closest(".card").css("background", "grey");
+          } else {
+            $(this).attr("src", $(this).attr("data-still"));
+            $(this).attr("data-state", "still");
+            $(this).closest(".card").css("background", "#e9ecef");
+          }
+      });*/
