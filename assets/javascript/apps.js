@@ -16,12 +16,12 @@ function displayGhoulGif() {
         method: "GET"
     }).done(function (response) {
 
-        var gifDiv = $("<div class='gif-view'>");
+        var gifDiv = $("<div class='item card'>");
         var results = response.data;
 
         for (var j = 0; j < results.length; j++) {
             var rating = results[j].rating;
-            var p = $("<p>").text("Rating: " + rating);
+            var p = $("<p>").text("Rating: " + rating.toUpperCase());
             var ghoulImage = $("<img>");
 
 
@@ -31,8 +31,9 @@ function displayGhoulGif() {
             ghoulImage.attr("data-state", "still");
             ghoulImage.addClass("gif");
 
-            gifDiv.append(p);
+            
             gifDiv.append(ghoulImage);
+            gifDiv.append(p);
             $("#gif-view").prepend(gifDiv);
 
         };
@@ -80,11 +81,13 @@ $("#gif-view").on("click", ".gif", function () {
     if (state === "still") {
         $(this).attr("src", $(this).attr("data-animate"));
         $(this).attr("data-state", "animate");
+        $(this).closest(".card").css("background", "grey");
 
 
     } else {
         $(this).attr("src", $(this).attr("data-still"));
         $(this).attr("data-state", "still");
+        $(this).closest(".card").css("background", "#e9ecef");
        
     }
 });
