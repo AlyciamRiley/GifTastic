@@ -28,10 +28,10 @@ function displayGhoulGif() {
             ghoulImage.attr("src", results[j].images.original_still.url);
             ghoulImage.attr("data-still", results[j].images.original_still.url);
             ghoulImage.attr("data-animate", results[j].images.original.url);
-            ghoulImage.attr("data-state", "still");
+            ghoulImage.attr("data-state", "animate");
             ghoulImage.addClass("gif");
 
-            
+
             gifDiv.append(ghoulImage);
             gifDiv.append(p);
             $("#gif-view").prepend(gifDiv);
@@ -74,21 +74,18 @@ $(document).on("click", ".btn-ghoul", displayGhoulGif);
 
 $("#gif-view").on("click", ".gif", function () {
     console.log("clicked");
-    
+
 
     var state = $(this).attr("data-state");
 
-    if (state === "still") {
-        $(this).attr("src", $(this).attr("data-animate"));
-        $(this).attr("data-state", "animate");
-        $(this).closest(".card").css("background", "grey");
-
-
-    } else {
+    if (state === "animate") {
         $(this).attr("src", $(this).attr("data-still"));
         $(this).attr("data-state", "still");
-        $(this).closest(".card").css("background", "#e9ecef");
-       
+    } else {
+        $(this).attr("src", $(this).attr("data-animate"));
+        $(this).attr("data-state", "animate");
+
+
     }
 });
 
