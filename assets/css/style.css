@@ -81,6 +81,14 @@ img {
     padding: 25px;
 }
 
+#gameplay {
+    font-family: 'Lato', sans-serif;
+    color: #a6a6a6;
+    font-size: 16px;
+    line-height: 25px;
+    letter-spacing: 3px;
+    word-spacing: 7px;
+}
 
 
 #search-bar {
