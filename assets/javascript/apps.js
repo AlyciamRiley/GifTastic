@@ -16,12 +16,16 @@ function displayGhoulGif() {
         method: "GET"
     }).done(function (response) {
 
-        var gifDiv = $("<div class='item card'>");
+        
         var results = response.data;
 
         for (var j = 0; j < results.length; j++) {
+            
+            var gifDiv = $("<div class='item card'>");
             var rating = results[j].rating;
             var p = $("<p>").text("Rating: " + rating.toUpperCase());
+            
+            
             var ghoulImage = $("<img>");
 
 
@@ -84,6 +88,8 @@ $("#gif-view").on("click", ".gif", function () {
         
         $(this).attr("src", $(this).attr("data-still"));
         $(this).attr("data-state", "still");
+        
+        
     } else {
         $(this).attr("src", $(this).attr("data-animate"));
         $(this).attr("data-state", "animate");

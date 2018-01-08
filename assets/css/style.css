@@ -50,14 +50,14 @@ p {
 
 .card {
 	background: #1a001a;
-    width: 150px;
-	margin: 2px;
-    margin-bottom: 10px;
+    margin: 15px;   
+	
 }
 
 img {
 	height: 150px;
-	display: block;
+	display: inline-block;
+    
 }
 
 
