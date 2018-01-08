@@ -7,6 +7,7 @@ var ghouls = ['Babadook', 'Norman Bates', 'The Boogeyman', 'Chupacabra', 'Donald
 
 //button calls 10S gifs from giphy(static)
 function displayGhoulGif() {
+    $("#gif-view").empty();
     var ghoul = $(this).attr("data-name");
     var queryURL = "https://api.giphy.com/v1/gifs/search?q=" + ghoul + "&api_key=hEOJpTZTXZTmdI9Wu2qQpiO2COrWCj5q&limit=10";
 
@@ -15,7 +16,7 @@ function displayGhoulGif() {
         method: "GET"
     }).done(function (response) {
 
-        var gifDiv = $("<div class='item'>");
+        var gifDiv = $("<div class='gif-view'>");
         var results = response.data;
 
         for (var j = 0; j < results.length; j++) {
@@ -23,14 +24,14 @@ function displayGhoulGif() {
             var p = $("<p>").text("Rating: " + rating);
             var ghoulImage = $("<img>");
 
-            
+
             ghoulImage.attr("src", results[j].images.original_still.url);
             ghoulImage.attr("data-still", results[j].images.original_still.url);
             ghoulImage.attr("data-animate", results[j].images.original.url);
             ghoulImage.attr("data-state", "still");
             ghoulImage.addClass("gif");
 
- gifDiv.append(p);
+            gifDiv.append(p);
             gifDiv.append(ghoulImage);
             $("#gif-view").prepend(gifDiv);
 
@@ -48,7 +49,7 @@ function renderButtons() {
 
     for (var i = 0; i < ghouls.length; i++) {
         var a = $("<button>");
-        a.addClass("ghoul");
+        a.addClass("btn-ghoul");
         a.attr("data-name", ghouls[i]);
         a.text(ghouls[i]);
         $("#buttons-view").append(a);
@@ -68,36 +69,25 @@ $("#add-ghoul").on("click", function (event) {
     renderButtons();
 });
 
-$(document).on("click", ".ghoul", displayGhoulGif);
-$("#gif-view").on("click", ".gif", function(displayGhoulGif) {
+$(document).on("click", ".btn-ghoul", displayGhoulGif);
+
+$("#gif-view").on("click", ".gif", function () {
     console.log("clicked");
     
+
     var state = $(this).attr("data-state");
-    
+
     if (state === "still") {
         $(this).attr("src", $(this).attr("data-animate"));
         $(this).attr("data-state", "animate");
-        
+
+
     } else {
         $(this).attr("src", $(this).attr("data-still"));
         $(this).attr("data-state", "still");
+       
     }
 });
 
 // Calling the renderButtons function at least once to display the initial list of ghouls
 renderButtons();
-
-
-/*$("#gifs-appear-here").on("click", ".gif", function() {
-          console.log("clicked");
-          var state = $(this).attr("data-state");
-            if (state === "still") {
-            $(this).attr("src", $(this).attr("data-animate"));
-            $(this).attr("data-state", "animate");
-            $(this).closest(".card").css("background", "grey");
-          } else {
-            $(this).attr("src", $(this).attr("data-still"));
-            $(this).attr("data-state", "still");
-            $(this).closest(".card").css("background", "#e9ecef");
-          }
-      });*/
