@@ -31,7 +31,7 @@ function displayGhoulGif() {
 
             ghoulImage.attr("data-animate", results[j].images.original.url);
             ghoulImage.attr("data-state", "animate");
-            ghoulImage.attr("src", results[j].images.original_still.url);
+            ghoulImage.attr("src", results[j].images.original.url);
             ghoulImage.attr("data-still", results[j].images.original_still.url);
            
             ghoulImage.addClass("gif");
