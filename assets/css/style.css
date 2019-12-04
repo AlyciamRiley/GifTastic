@@ -1,6 +1,6 @@
 body {
-    background-image:url('../images/forest.jpg');
-    background-repeat:no-repeat;
+    background-image: url('../images/forest.jpg');
+    background-repeat: no-repeat;
     background-position: center;
     background-attachment: fixed;
     font-family: 'Lato', sans-serif;
@@ -11,10 +11,10 @@ body {
     font-family: '1942_report1942_report';
     src: url('1942-webfont.eot');
     src: url('1942-webfont.eot?#iefix') format('embedded-opentype'),
-         url('1942-webfont.woff2') format('woff2'),
-         url('1942-webfont.woff') format('woff'),
-         url('1942-webfont.ttf') format('truetype'),
-         url('1942-webfont.svg#1942_report1942_report') format('svg');
+        url('1942-webfont.woff2') format('woff2'),
+        url('1942-webfont.woff') format('woff'),
+        url('1942-webfont.ttf') format('truetype'),
+        url('1942-webfont.svg#1942_report1942_report') format('svg');
     font-weight: normal;
     font-style: normal;
 
@@ -25,13 +25,25 @@ body {
     width: 100%;
 }
 
+p {
+    text-align: center;
+    padding-top: 10px;
+    margin-bottom: 10px;
+}
+
+img {
+    height: 150px;
+    display: inline-block;
+}
+
 #buttons-view {
     padding: 25px;
     text-align: center;
 }
 
-.btn-ghoul, #add-ghoul {
-    background-color: #1a001a; 
+.btn-ghoul,
+#add-ghoul {
+    background-color: #1a001a;
     border: none;
     color: #a6a6a6;
     padding: 10px;
@@ -44,31 +56,18 @@ body {
 }
 
 
-p {
-	text-align: center;
-	padding-top: 10px;
-	margin-bottom: 10px;;
-}
-
 .card {
-	background: #1a001a;
-    margin: 15px;   
-	
-}
-
-img {
-	height: 150px;
-	display: inline-block;
-    
+    background: #1a001a;
+    margin: 15px;
 }
 
 
 .wrapper {
+    width: 100%;
     margin: 25px auto auto 200px;
     padding: 15px;
     background: rgba(26, 0, 26, .5);
     border: 5px solid #1a001a;
-    
 }
 
 #title {
@@ -76,7 +75,7 @@ img {
     font-family: '1942_report1942_report';
     font-weight: 700;
     font-size: 42px;
-    color:#a6a6a6;
+    color: #a6a6a6;
     text-shadow: 1px 1px 3px #000;
     padding: 25px;
 }
@@ -98,9 +97,8 @@ img {
 /* 
 Small devices (landscape phones, 576px and up) */
 @media (max-width: 576px) {
-
     .wrapper {
-        margin: 5px;    
+        margin: 5px;
     }
 
     #title {
@@ -114,7 +112,8 @@ Small devices (landscape phones, 576px and up) */
         word-spacing: 0px;
     }
 
-    .btn, #add-ghoul {
+    .btn,
+    #add-ghoul {
         font-size: 12px;
     }
 
@@ -130,39 +129,39 @@ Small devices (landscape phones, 576px and up) */
 
 /* // Medium devices (tablets, 768px and up) */
 @media (max-width: 768px) {
-        .wrapper {
-            margin: 5px;
-        }
+    .wrapper {
+        margin: 5px;
+    }
 
-        #title {
-            font-size: 24px;
-            text-shadow: none;
-        }
+    #title {
+        font-size: 24px;
+        text-shadow: none;
+    }
 
-        #gameplay {
-            font-size: 12px;
-            line-height: 12px;
-            word-spacing: 0px;
-        }
+    #gameplay {
+        font-size: 12px;
+        line-height: 12px;
+        word-spacing: 0px;
+    }
 
-        .btn,
-        #add-ghoul {
-            font-size: 12px;
-        }
+    .btn,
+    #add-ghoul {
+        font-size: 12px;
+    }
 
-        img {
-            height: 100px;
-        }
+    img {
+        height: 100px;
+    }
 
-        input#ghoul-input {
-            font-size: 12px;
-        }
+    input#ghoul-input {
+        font-size: 12px;
+    }
 
 }
 
 /* // Large devices (desktops, 992px and up) */
 @media (max-width: 992px) {
-        .wrapper {
-        margin: 5px;    
+    .wrapper {
+        margin: 5px;
     }
 }
