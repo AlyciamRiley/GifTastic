@@ -9,7 +9,7 @@ var ghouls = ['Babadook', 'Norman Bates', 'The Boogeyman', 'Chupacabra', 'Donald
 function displayGhoulGif() {
     $("#gif-view").empty();
     var ghoul = $(this).attr("data-name");
-    var queryURL = "https://api.giphy.com/v1/gifs/search?q=" + ghoul + "&api_key=hEOJpTZTXZTmdI9Wu2qQpiO2COrWCj5q&limit=10";
+    var queryURL = "https://api.giphy.com/v1/gifs/search?q=" + ghoul + "&api_key=hEOJpTZTXZTmdI9Wu2qQpiO2COrWCj5q&limit=5";
 
     $.ajax({
         url: queryURL,
@@ -55,7 +55,7 @@ function renderButtons() {
 
     for (var i = 0; i < ghouls.length; i++) {
         var a = $("<button>");
-        a.addClass("btn-ghoul");
+        a.addClass("btn btn-ghoul");
         a.attr("data-name", ghouls[i]);
         a.text(ghouls[i]);
         $("#buttons-view").append(a);

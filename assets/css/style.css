@@ -20,8 +20,10 @@ body {
 
 }
 
-
-
+body {
+    max-width: 960px;
+    width: 100%;
+}
 
 #buttons-view {
     padding: 25px;
@@ -62,8 +64,6 @@ img {
 
 
 .wrapper {
-    max-width: 960px;
-    width: 100%;
     margin: 25px auto auto 200px;
     padding: 15px;
     background: rgba(26, 0, 26, .5);
@@ -95,3 +95,50 @@ img {
     text-align: center;
 }
 
+/* 
+Small devices (landscape phones, 576px and up) */
+@media (max-width: 576px) {
+
+    .wrapper {
+        margin: 5px;    
+    }
+
+    #title {
+        font-size: 24px;
+        text-shadow: none;
+    }
+
+    #gameplay {
+        font-size: 12px;
+        line-height: 12px;
+        word-spacing: 0px;
+    }
+
+    .btn, #add-ghoul {
+        font-size: 12px;
+    }
+
+    img {
+        height: 100px;
+    }
+
+    input#ghoul-input {
+        font-size: 12px;
+    }
+
+}
+
+/* // Medium devices (tablets, 768px and up) */
+@media (max-width: 768px) {
+
+}
+
+/* // Large devices (desktops, 992px and up) */
+@media (max-width: 992px) {
+
+}
+
+/* // Extra large devices (large desktops, 1200px and up) */
+@media (min-width: 1200px) {
+
+}
